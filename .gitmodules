@@ -1,3 +1,6 @@
 [submodule "TerrariaServerAPI"]
 	path = TerrariaServerAPI
 	url = git@github.com:cc004/TerrariaServerAPI.git
+[submodule "TSAPI"]
+	path = TSAPI
+	url = https://github.com/xuyuwtu/TSAPI.git
