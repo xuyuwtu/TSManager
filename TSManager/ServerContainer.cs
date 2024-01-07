@@ -1,25 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GameLauncher;
+using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Runtime.Loader;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using System.Windows.Threading;
-using GameLauncher;
-using Newtonsoft.Json;
-using TSManager.Annotations;
 
 namespace TSManager
 {
@@ -40,7 +28,7 @@ namespace TSManager
                     if (!IsRunning)
                     {
                         Start();
-                        OnPropertyChanged(nameof(IsRunning));
+                        OnPropertyChanged();
                     }
                 }
                 else
@@ -48,7 +36,7 @@ namespace TSManager
                     if (_process != null)
                     {
                         _process.Kill();
-                        OnPropertyChanged(nameof(IsRunning));
+                        OnPropertyChanged();
                     }
                 }
             }
@@ -64,7 +52,7 @@ namespace TSManager
             private set
             {
                 _title = value;
-                OnPropertyChanged(nameof(Title));
+                OnPropertyChanged();
             }
         }
 
@@ -92,7 +80,6 @@ namespace TSManager
 
         private void Start()
         {
-            _para.Inlines.Clear();
             _process = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -184,7 +171,6 @@ namespace TSManager
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

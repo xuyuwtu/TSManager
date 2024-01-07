@@ -1,27 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TerrariaServerAPI\TerrariaServerAPI\TerrariaServerAPI.csproj">
-      <Aliases>Ignore</Aliases>
-    </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Plugins\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Compile Include="..\TerrariaServerAPI\TerrariaServerAPI\ServerConfig.cs" />
-  </ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\TSAPI\TerrariaServerAPI\TerrariaServerAPI.csproj" />
+	</ItemGroup>
 
 </Project>
